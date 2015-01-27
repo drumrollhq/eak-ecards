@@ -5,5 +5,5 @@ require 'lib/helpers'
 require 'routers/main'
 
 $ ->
-    # Initialize Backbone History
-    Backbone.history.start()
+  # Initialize Backbone History
+  Backbone.history.start!
