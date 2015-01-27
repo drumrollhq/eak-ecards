@@ -1,0 +1,26 @@
+{
+  "sections": [
+    {
+      "name": "startups",
+      "description": "Tarquin Glitterquiff's Cards for the Passionate Entrepeneur"
+    }, {
+      "name": "awful",
+      "description": "Amour Aimants by Cornelius Discotoes'"
+    }
+  ],
+  "templates": [
+    {
+      "name": "expenses",
+      "alt": "Expenses in red, revenue in blue, your projections are stunning, I'll invest in you",
+      "section": "startups"
+    }, {
+      "name": "user-friendly",
+      "alt": "Are you user-friendly?",
+      "section": "startups"
+    }, {
+      "name": "green",
+      "alt": "I have disco toes. What toes do you have?",
+      "section": "awful"
+    }
+  ]
+}
