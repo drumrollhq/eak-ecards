@@ -1,0 +1,20 @@
+<!-- .templateSelect -->
+<header class="step-header step-header-one">
+  <h2>Step 1:</h2>
+  <h3>Choose your template</h3>
+</header>
+<ul class="template-preview-list">
+  {{#each this}}
+    <li class="template-preview-list-item">
+      <a href="#/remix/{{name}}" class="template-preview">
+        <img src="/images/templates/{{name}}.jpeg" class="template-preview-image">
+        <div class="template-preview-meta">
+          <div class="template-preview-meta-title">&ldquo;{{title}}&rdquo;</div>
+          <div class="template-preview-meta-by">
+            By <span class="template-preview-meta-author">{{author}}</span>
+          </div>
+        </div>
+      </a>
+    </li>
+  {{/each}}
+</ul>

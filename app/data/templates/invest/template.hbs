@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Invest</title>
+    <link href="//fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet" type="text/css">
+    <style>
+      body {
+        font-family: 'Josefin Slab', cursive;
+        margin: 0;
+        padding: 0;
+      }
+
+      img {
+        box-sizing: -webkit-border-box;
+        box-sizing:    -moz-border-box;
+        box-sizing:         border-box;
+        display: block;
+        width: 100%;
+        max-width: 500px;
+        margin: auto;
+        padding: 15px;
+      }
+
+      p, h1 {
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 15px;
+        font-size: 24px;
+      }
+
+      .poem {
+        /* font-family: 'Tangerine', serif; */
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        margin-top: 25%;
+      }
+
+      .poem p {
+        font-size: 5.5vw;
+        margin-top: 0;
+        margin-bottom: 5px;
+        max-width: auto;
+      }
+
+      .from {
+        font-size: 22px;
+        text-align: right;
+        padding-right: 30px;
+        margin-top: -10px;
+      }
+
+      @media screen and (min-width: 500px) {
+        .poem {
+          margin-top: 125px;
+        }
+
+        .poem p {
+          font-size: 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>{{to}}</h1>
+    <section class="poem">
+      <p>{{line1}}</p>
+      <p>{{line2}}</p>
+      <p>{{line3}}</p>
+      <p>{{line4}}</p>
+    </section>
+    <img src="/images/dragons.png">
+    <p>{{from1}}</p>
+    <p class="from">{{from2}}</p>
+  </body>
+</html>

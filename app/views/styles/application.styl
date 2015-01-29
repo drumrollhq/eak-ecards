@@ -1,3 +1,26 @@
 @import 'nib'
+@import '../../../node_modules/jeet/stylus/jeet'
+@import '_variables'
+@import '_fonts'
 @import '_base'
 
+html, body
+  margin 0
+  padding 0
+  width 100%
+  height 100%
+
+h1, h2, h3
+  font-family brandFont
+  font-weight normal
+
+
+.loading
+  clear both
+  margin 30px
+
+@import '_headers'
+
+@import '_template-select'
+@import '_customize'
+@import '_simple-customizer'

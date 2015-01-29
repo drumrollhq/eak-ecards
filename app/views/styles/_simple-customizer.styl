@@ -1,0 +1,90 @@
+.simple-customizer
+  textarea
+    display inline-block
+    background rgba(white, 0.4)
+    border none
+    border-bottom 1px dashed rgba(black, 0.5)
+    resize none
+    overflow hidden
+
+textarea, .textarea
+  font-family font
+  font-weight 300
+  padding 3px
+
+.tag
+  display block
+  padding 10px 5px 10px 15px
+
+  .tag
+    margin-left 15px
+
+.tag-open, .tag-contents, .tag-close
+  display inline-block
+
+.tag-open,
+.tag-close
+  font-family codeFonts
+
+.tag-tagname
+  color #268BD2
+
+.tag-angle-bracket,
+.tag-attribute-equals,
+.tag-attribute-quote
+  color #586E75
+
+.tag-attribute-name
+  color #D33682
+
+.tag-attribute-value
+  color #859900
+
+.tag-contains-tags
+  > .tag-open
+    margin-bottom 10px
+  > .tag-contents
+    display block
+  > .tag-close
+    margin-top 10px
+
+.tag-img
+  > .tag-contents,
+  > .tag-close
+    display none !important
+
+hues = 52 178
+
+tag-color(x, y0)
+  y = y0 - 1
+  hsl(hues[operate('%', x + y, 2)], 63% + (y * 5%), 92% - (y * 5%))
+
+tag-colors(x, y)
+  content 'x: ' + x + '; y: ' + y + '; x+y: ' + (x + y) + '; %2: ' + operate('%', x + y, 2)
+  background-color tag-color(x, y)
+
+for x in (0..10)
+  .tag
+    &:nth-child({x})
+      tag-colors x, 1
+    .tag
+      &:nth-child({x})
+        tag-colors x, 2
+      .tag
+        &:nth-child({x})
+          tag-colors x, 3
+        .tag
+          &:nth-child({x})
+            tag-colors x, 4
+          .tag
+            &:nth-child({x})
+              tag-colors x, 5
+            .tag
+              &:nth-child({x})
+                tag-colors x, 6
+              .tag
+                &:nth-child({x})
+                  tag-colors x, 7
+                .tag
+                  &:nth-child({x})
+                    tag-colors x, 8

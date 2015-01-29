@@ -25,6 +25,7 @@
     "handlebars-brunch": ">= 1.0 < 1.8",
     "imageoptmizer-brunch": "~0.0.3",
     "javascript-brunch": ">= 1.0 < 1.8",
+    "jeet": "^6.1.2",
     "stylus-brunch": ">= 1.0 < 1.8",
     "uglify-js-brunch": ">= 1.0 < 1.8"
   }
