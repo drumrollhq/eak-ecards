@@ -22,6 +22,7 @@
     "clean-css-brunch": ">= 1.0 < 1.8",
     "coffeelint-brunch": ">= 1.0 < 1.8",
     "css-brunch": ">= 1.0 < 1.8",
+    "digest-brunch": "^1.4.0",
     "handlebars-brunch": ">= 1.0 < 1.8",
     "imageoptmizer-brunch": "~0.0.3",
     "javascript-brunch": ">= 1.0 < 1.8",

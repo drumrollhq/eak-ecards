@@ -23,30 +23,38 @@
   .show-preview &
     transform translateX(-100%)
 
-.customize-header-customize, .customize-header-preview
+  .show-publish &
+    transform translateX(-200%)
+
+.customize-header-customize,
+.customize-header-preview,
+.customize-header-publish
+  top 0
   width 100%
   position absolute
   h4, .button
     position absolute
+    z-index 10
   h4
+    z-index 5
     margin 0
+    left 0
+    width 100%
+    text-align center
+    top 0
 
 .customize-header-customize
-  top 0
   left 0
-  h4
-    left 15px
 
 .customize-header-preview
-  top 0
   left 100%
-  h4
-    right 15px
 
-.customize-header-preview-button
+.customize-header-publish
+  left 200%
+
+.customize-header-forward-button
   right 15px
 
-.customize-header-customize-button,
 .customize-header-back-button
   left 15px
 
@@ -67,8 +75,12 @@
   .show-preview &
     transform translateX(-100%)
 
+  .show-publish &
+    transform translatex(-200%)
+
 .customize-pane,
-.preview-pane
+.preview-pane,
+.publish-pane
   overflow auto
   position absolute
   width 100%
@@ -110,24 +122,42 @@
   border none
   background white
 
+.publish-pane
+  left 200%
+
 @media screen and (min-width: 700px)
   .show-mobile
     display none
 
-  .customize-header-preview-button,
-  .customize-header-customize-button
-    display none
-
   .customize-header-customize,
   .customize-header-preview,
+  .customize-header-publish,
   .customize-pane,
-  .preview-pane
+  .preview-pane,
+  .publish-pane
     width 50%
 
   .customize-header-preview,
   .preview-pane
     left 50%
 
-  .show-preview .customize-content-inner,
-  .show-preview .customize-header-inner
-    transform translateX(0)
+  .customize-header-publish,
+  .publish-pane
+    left 100%
+
+  .show-preview
+    .customize-content-inner,
+    .customize-header-inner
+      transform translateX(0)
+
+  .show-publish
+    .customize-content-inner,
+    .customize-header-inner
+      transform translateX(-50%)
+
+    .customize-header-preview
+      .customize-header-back-button
+        display block
+
+      .customize-header-forward-button
+        display none

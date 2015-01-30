@@ -1,3 +1,5 @@
+stylus = require './node_modules/stylus-brunch/node_modules/stylus'
+
 exports.config = {
   files:
     javascripts:
@@ -27,6 +29,12 @@ exports.config = {
     imageoptimizer:
       path: 'images'
       smushit: no
+
+    stylus:
+      defines:
+        url: stylus.url()
+      paths: ['./app/assets']
+
 
   conventions:
     assets: /(assets|vendor\/assets|font)/

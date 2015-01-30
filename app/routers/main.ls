@@ -3,6 +3,7 @@ class MainRouter extends Backbone.Router
     '': 'templateSelect'
     'remix/:name': 'customize'
     'remix/:name/preview': 'customizePreview'
+    'remix/:name/publish': 'customizePublish'
 
   initialize: ({$root}) ->
     @$root = $root
@@ -25,15 +26,17 @@ class MainRouter extends Backbone.Router
   customize: (name, prevent-change-show = false) ->
     @_last-trans.then ({view, view-name, args = []}) ~>
       if view-name is 'views/CustomizeView' and args.0 === {name}
-        view.model.set 'showPreview' false unless prevent-change-show
+        view.show-customize!
         view
       else
         @show 'views/CustomizeView', {name}
           .then ({view}) -> view
 
   customize-preview: (name) ->
-    @customize name, true
-      .then (view) -> view.model.set 'showPreview', true
+    @customize name, true .then (view) -> view.show-preview!
+
+  customize-publish: (name) ->
+    @customize name, true .then (view) -> view.show-publish!
 
 main = new MainRouter $root: $ 'body > .app'
 module.exports = main

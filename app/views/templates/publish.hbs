@@ -1,0 +1,39 @@
+<!-- .publish -->
+{{#if loading}}
+  <div class="publish-loading">
+    <h3>Publishing...</h3>
+    <div class="loading-spinner-player">
+      <div class="player-inner">
+        <div class="player-head">
+          <div class="player-ear-left"></div>
+          <div class="player-ear-right"></div>
+          <div class="player-face"></div>
+          <div class="player-eyes"></div>
+        </div>
+        <div class="player-body"></div>
+        <div class="player-leg-left"></div>
+        <div class="player-leg-right"></div>
+      </div>
+    </div>
+    <p>Just a moment...</p>
+  </div>
+{{else}}
+  {{#if publishError}}
+    <h3>Something's gone wrong!</h3>
+    <p>There was an error publishing your card. Probably our fault.</p>
+    <button class="publish-retry">Retry</button>
+  {{else}}
+    <h3>Woohoo! Your card has been published!</h3>
+    <a class="publish-url" target="_blank" href="https://cards.eraseallkittens.com{{file}}">
+      cards.eraseallkittens.com{{file}}
+    </a>
+    <p>Send the link above to someone special, or share it below:</p>
+    <a class="social-button social-button-twitter" target="_blank" href="http://twitter.com/intent/tweet?text={{urlencode "Woah, I made an e-card! http://cards.eraseallkittens.com" file " Make your own here: http://cards.eraseallkittens.com"}}">
+      Share on Twitter
+    </a>
+    <a class="social-button social-button-facebook" target="_blank" href="http://facebook.com/sharer.php?u={{urlencode "http://cards.eraseallkittens.com" file}}&t={{urlencode "Woah, I made an e-card! Make yout own here: http://cards.eraseallkittens.com"}}">
+      Share on Facebook
+    </a>
+  {{/if}}
+{{/if}}
+
