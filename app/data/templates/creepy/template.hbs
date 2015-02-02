@@ -2,16 +2,70 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>{{title}}</title>
+    <title>{{message2}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
     <style>
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
       body {
+        position: absolute;
+        font-family: 'Tangerine', cursive;
+        font-size: 35px;
         margin: 0;
         padding: 0;
+        background-color: #F1D7FF;
+        background-image: url('/images/hearts.png'),  -webkit-linear-gradient(bottom, #F1D7FF, #D9F0FF);
+        background-image: url('/images/hearts.png'),     -moz-linear-gradient(bottom, #F1D7FF, #D9F0FF);
+        background-image: url('/images/hearts.png'),          linear-gradient(bottom, #F1D7FF, #D9F0FF);
+        background-size: 135px 90px, auto;
+        background-repeat: repeat, repeat-x;
+      }
+
+      section {
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        position: relative;
+        height: 100%;
+      }
+
+      .from {
+        padding-bottom: 400px;
+        text-align: right;
+      }
+
+      p {
+        margin: 0;
+        margin-bottom: 15px;
+      }
+
+      img {
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        height: 500px;
+        margin-left: -150px;
+      }
+
+      h1 {
+        font-weight: normal;
+        font-size: 1.8em;
+        text-align: center;
       }
     </style>
   </head>
   <body>
+    <section class="card">
+      <p>{{to}}</p>
+      <p>{{message1}}</p>
+      <h1>{{message2}}</h1>
+      <p class="from">{{from}}</p>
+    </section>
+    <img src="{{img}}" alt="tentacle!">
   </body>
 </html>
