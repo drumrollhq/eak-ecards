@@ -6,13 +6,13 @@ module.exports = {
     img: '/images/templates/creepy.png'
     alt: 'I like you in a non-creepy way'
   cupcakes:
-    img: '/images/templates/'
-    alt: 'I like you more the cupcakes'
+    img: '/images/templates/cupcakes.png'
+    alt: 'I like you more than cupcakes'
   game-changer:
-    img: '/images/templates/'
+    img: '/images/templates/game-changer.png'
     alt: 'Out love is a real game-changer, you have disrupted my soul'
   glad:
-    img: '/images/templates/'
+    img: '/images/templates/glad.png'
     alt: 'I\'m glad you\'re not dead yet'
   invest:
     img: '/images/templates/'
