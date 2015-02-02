@@ -4,4 +4,5 @@ require! {
 
 module.exports = class TemplateSelectModel extends Backbone.DeepModel
   setup: (cards) ->
-    @set {[card.name, card] for card in cards}
+    for name, card of cards => card.name = name
+    @set cards

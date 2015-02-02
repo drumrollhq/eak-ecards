@@ -10,19 +10,18 @@ render-html = (structure, data) ->
 
 render-one = (structure, data) ->
   | typeof structure.tag is \string => render-tag structure, data
-  | typeof structure.placeholder is \string => render-placeholder structure.placeholder, data
+  | typeof structure.placeholder is \string => render-placeholder structure, data
   | otherwise => throw new Error "Cannot render structure: #{JSON.stringify structure, null, 2}"
 
 # Horrible whitespace to prevent gaps from showing up everywhere:
 render-tag = (structure, data) ->
   """
-    <div class="tag tag-#{structure.tag.to-lower-case!} #{if structure.contents then 'tag-has-contents' else ''} #{if contains-tags structure then 'tag-contains-tags' else ''}" data-tag-name="#{structure.tag}">
+    <div class="tag tag-#{structure.tag.to-lower-case!} #{if structure.contents then 'tag-has-contents' else ''} contains-tags-#{contains-tags structure} #{if contains-tags structure then 'tag-contains-tags' else ''}" data-tag-name="#{structure.tag}">
       <div class="tag-open">
         <span class="tag-angle-bracket">&lt;</span><span class="tag-tagname">#{structure.tag}</span>#{if structure.attrs? then """
           <span class="tag-attributes">
-            #{(for name, value of structure.attrs => """
-              <span class="tag-attribute-name">#{dasherize name}</span><span class="tag-attribute-equals">=</span><span class="tag-attribute-quote">&quot;</span><span class="tag-attribute-value">#{value}</span><span class="tag-attribute-quote">&quot;</span>
-            """).join ' '}</span>
+            #{(for name, value of structure.attrs => render-attr name, value, data).join ' '}
+           </span>
         """ else ''}<span class="tag-angle-bracket">&gt;</span>
       </div>
       <div class="tag-contents">
@@ -41,10 +40,18 @@ render-tag = (structure, data) ->
 render-placeholder = ({placeholder}, data) -> """
   <textarea class="tag-placeholder textarea-autoextend" data-placeholder="#{placeholder}">#{data[placeholder]}</textarea>"""
 
+render-attr = (name, value, data) -> """
+  <span class="tag-attribute-name">#{dasherize name}</span><span class="tag-attribute-equals">=</span><span class="tag-attribute-quote">&quot;</span><span class="tag-attribute-value">#{render-attr-value value, data}</span><span class="tag-attribute-quote">&quot;</span>
+"""
+
+render-attr-value = (value, data) ->
+  | typeof! value is 'String' => value
+  | value.placeholder? => """<input type="text" class="tag-attr-placeholder" data-placeholder="#{value.placeholder}" value="#{data[value.placeholder]}">"""
+
 contains-tags = (structure) ->
   structure.contents? and
-    typeof! structure.contents is 'Array' and
-    structure.contents.filter ( .tag? ) .length
+    (typeof! structure.contents is 'Array' and structure.contents.filter ( .tag? ) .length) or
+    (typeof! structure.contents is 'Object' and structure.contents.tag?)
 
 get-tag-open-close = ($tag) ->
   $open = if $tag.data 'tag-open'
@@ -84,10 +91,13 @@ module.exports = class SimpleCustomizerView extends Backbone.View
   events:
     'change textarea': 'textareaChange'
     'keyup textarea': 'textareaChange'
-    'keydown textarea': 'textareaChange'
     'keypress textarea': 'textareaChange'
+    'change input': 'inputChange'
+    'keyup input': 'inputChange'
+    'keypress input': 'inputChange'
 
   initialize: ->
+    console.log 'init'
     @render!
 
   render: ->
@@ -95,13 +105,17 @@ module.exports = class SimpleCustomizerView extends Backbone.View
     data = @model.to-JSON!
     html = render-html template-structure, data
     @$el.html html
-    @resize-all-textareas!
-    set-timeout @resize-all-textareas, 500
+    @resize-all!
+    set-timeout @resize-all, 500
 
-  resize-all-textareas: ~>
+  resize-all: ~>
     @$el.find 'textarea' .each (i, el) ~>
       $el = $ el
       @textarea-resize $el, $el.val!
+
+    @$el.find 'input' .each (i, el) ~>
+      $el = $ el
+      @input-resize $el, $el.val!
 
   textarea-change: (e) ->
     $el = $ e.target
@@ -109,6 +123,20 @@ module.exports = class SimpleCustomizerView extends Backbone.View
     unless val is $el.data \last-val
       @textarea-resize $el, val
       @model.set ($el.data 'placeholder'), val
+      $el.data \last-val, val
+
+  input-change: (e) ->
+    $el = $ e.target
+    val = $el.val!
+    unless val is $el.data \last-val
+      @input-resize $el, val
+      @model.set ($el.data 'placeholder'), val
+      $el.data \last-val, val
+
+  input-resize: ($el, val) ->
+    $util-el.text val + ' '
+    {width} = @calc-textarea-dimension 200
+    $el.css {width}
 
   textarea-resize: ($el, val) ->
     $util-el.text val + ' '
@@ -119,7 +147,7 @@ module.exports = class SimpleCustomizerView extends Backbone.View
     max-inline-width = $tag.inner-width! - $open.width! - $close.width! - 60
     {width, height} = @calc-textarea-dimension max-inline-width
 
-    if height > 30
+    if height > 30 or $tag.has-class 'tag-contains-tags'
       # Block mode:
       $tag-contents.css display: 'block'
       $util-el.css max-width: $tag-contents.width!

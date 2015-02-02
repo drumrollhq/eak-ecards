@@ -7,13 +7,7 @@
   {{#each this}}
     <li class="template-preview-list-item">
       <a href="#/remix/{{name}}" class="template-preview">
-        <img src="/images/templates/{{name}}.jpeg" class="template-preview-image">
-        <div class="template-preview-meta">
-          <div class="template-preview-meta-title">&ldquo;{{title}}&rdquo;</div>
-          <div class="template-preview-meta-by">
-            By <span class="template-preview-meta-author">{{author}}</span>
-          </div>
-        </div>
+        <img src="/images/templates/{{name}}.jpeg" class="template-preview-image" alt="{{alt}}">
       </a>
     </li>
   {{/each}}
