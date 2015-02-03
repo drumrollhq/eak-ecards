@@ -7,10 +7,21 @@
     <link href="//fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
     <link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet" type="text/css">
     <style>
+      body, html {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
       body {
         font-family: 'Josefin Slab', cursive;
         margin: 0;
         padding: 0;
+        background-color: #F1D7FF;
+        background-image: url('/images/hearts.png'),  -webkit-linear-gradient(top, #FCE0FB, #FDC4FF);
+        background-image: url('/images/hearts.png'),     -moz-linear-gradient(top, #FCE0FB, #FDC4FF);
+        background-image: url('/images/hearts.png'),          linear-gradient(top, #FCE0FB, #FDC4FF);
+        background-size: 135px 90px, auto;
+        background-repeat: repeat, repeat-x;
       }
 
       img {
@@ -74,7 +85,7 @@
       <p>{{line3}}</p>
       <p>{{line4}}</p>
     </section>
-    <img src="/images/dragons.png">
+    <img src="{{img}}">
     <p>{{from1}}</p>
     <p class="from">{{from2}}</p>
   </body>

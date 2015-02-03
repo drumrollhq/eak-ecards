@@ -19,15 +19,52 @@ module.exports = class CardModel extends Backbone.Model
     obj
 
   save: ->
-    local-storage.set-item "card-save:#{@get 'name'}", JSON.stringify @data-to-json!
+    to-save = @data-to-json!
+    if to-save !== @_last-saved
+      local-storage.set-item "card-save:#{@get 'name'}", JSON.stringify @data-to-json!
+      console.log 'set' "card-save:#{@get \name}"
+      @_last-saved = to-save
 
   restore-saved: ->
     json = local-storage.get-item "card-save:#{@get 'name'}"
+    console.log 'get' "card-save:#{@get \name}"
     @set JSON.parse json
+
+  before-publish: (html) ->
+    to-add = """
+      <script>
+        // Remix button:
+        var style = document.createElement('link');
+        style.setAttribute('href', '//fonts.googleapis.com/css?family=Open+Sans:300');
+        style.setAttribute('rel', 'stylesheet');
+        document.body.appendChild(style);
+        var link = document.createElement('a');
+        link.innerHTML = 'Make your own &rarr;';
+        link.setAttribute('href', 'https://cards.eraseallkittens.com/');
+        link.setAttribute('style', 'display: block; position: absolute; top: 0; right: 0; background-color: rgba(0, 0, 0, 0.5); color: white; text-decoration: none; font-family: "Open Sans", sans-serif; font-size: 18px; font-weight: 300; padding: 5px 10px; border-bottom-left-radius: 10px;');
+        document.body.appendChild(link);
+
+        // Analytics
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '#{window.analyticsId}', 'auto');
+        ga('send', 'pageview');
+      </script>
+    """
+    re = /<body\/>/i
+    if html.match re
+      html = html.replace re, to-add + '</body>'
+    else
+      html += to-add
+
+    html
 
   publish: ->
     template = require "data/templates/#{@get \name}/template"
-    html = template @data-to-json!
+    html = @before-publish template @data-to-json!
     @set 'loading' true
     @unset 'publishError'
     @unset 'file'
@@ -40,6 +77,8 @@ module.exports = class CardModel extends Backbone.Model
       cross-domain: true
     }
       .then ({file}) ~>
+        local-storage.remove-item "card-save:#{@get \name}"
+        console.log 'remove' "card-save:#{@get \name}"
         @set 'loading' false
         @set 'file' file
       .catch (e) ~>

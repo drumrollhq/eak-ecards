@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+    <style>
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: 'Tangerine', cursive;
+        font-size: 32px;
+        margin: 0;
+        padding: 0;
+        background-color: #F1D7FF;
+        background-image: -webkit-linear-gradient(bottom, #E9EAB2, #9FDEED);
+        background-image:    -moz-linear-gradient(bottom, #E9EAB2, #9FDEED);
+        background-image:         linear-gradient(bottom, #E9EAB2, #9FDEED);
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      .card {
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        padding-top: 0;
+      }
+
+      p {
+        text-align: right;
+        margin: 0;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        max-width: 450px;
+        margin: auto;
+      }
+
+      .from {
+        font-size: 1.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h1>{{message}}</h1>
+      <img src="{{img}}" alt="Tarquin">
+      <p>{{from1}}</p>
+      <p class="from">{{from2}}</p>
+    </section>
+  </body>
+</html>
