@@ -10,24 +10,24 @@ module.exports = class CardModel extends Backbone.Model
     @restore-saved!
     @data-keys = keys fields
     @set \simpleTemplate, require "data/templates/#{@get \name}/simple"
+    @template = require "data/templates/#{@get \name}/template"
 
     @on 'change', _.throttle (~> @save!), 2500ms
 
   data-to-json: ->
     obj = {}
     for key in @data-keys => obj[key] = @get key
+    if @get 'src' then obj.src = that
     obj
 
   save: ->
     to-save = @data-to-json!
     if to-save !== @_last-saved
       local-storage.set-item "card-save:#{@get 'name'}", JSON.stringify @data-to-json!
-      console.log 'set' "card-save:#{@get \name}"
       @_last-saved = to-save
 
   restore-saved: ->
     json = local-storage.get-item "card-save:#{@get 'name'}"
-    console.log 'get' "card-save:#{@get \name}"
     @set JSON.parse json
 
   before-publish: (html) ->
@@ -63,8 +63,7 @@ module.exports = class CardModel extends Backbone.Model
     html
 
   publish: ->
-    template = require "data/templates/#{@get \name}/template"
-    html = @before-publish template @data-to-json!
+    html = @before-publish if @get 'advancedMode' and @get 'src' then @get 'src' else @template @data-to-json!
     @set 'loading' true
     @unset 'publishError'
     @unset 'file'
@@ -78,7 +77,6 @@ module.exports = class CardModel extends Backbone.Model
     }
       .then ({file}) ~>
         local-storage.remove-item "card-save:#{@get \name}"
-        console.log 'remove' "card-save:#{@get \name}"
         @set 'loading' false
         @set 'file' file
       .catch (e) ~>

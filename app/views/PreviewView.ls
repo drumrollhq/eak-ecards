@@ -2,12 +2,11 @@ module.exports = class PreviewView extends Backbone.View
   class-name: 'preview-view'
   initialize: ->
     @update = _.throttle (@_update.bind this), 500
-    @template = require "data/templates/#{@model.get \name}/template"
     @setup!
     @listen-to @model, 'change', @update
 
   render: (fields) ->
-    html = @template fields
+    html = @model.template fields
     @try-render html
 
   try-render: (html) ->
@@ -21,10 +20,14 @@ module.exports = class PreviewView extends Backbone.View
       set-timeout (~> @try-render html), 1
 
   _update: ->
-    fields = @model.data-to-json!
-    unless @_last-fields === fields
-      @_last-fields = fields
-      @render fields
+    if @model.get 'advancedMode'
+      @_last-fields = null
+      @try-render @model.get 'src'
+    else
+      fields = @model.data-to-json!
+      unless @_last-fields === fields
+        @_last-fields = fields
+        @render fields
 
   setup: ->
     @$iframe = $ '<iframe></iframe>'

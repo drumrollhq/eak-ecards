@@ -1,5 +1,6 @@
 require! {
   'models/CardModel'
+  'views/AdvancedCustomizerView'
   'views/PreviewView'
   'views/PublishView'
   'views/SimpleCustomizerView'
@@ -13,12 +14,14 @@ module.exports = class CustomizeView extends Backbone.View
 
   events:
     'click .customize-instructions-dismiss': 'dismissInstructions'
+    'click .customize-type-toggle': 'toggleAdvancedMode'
 
   initialize: ({name}) ->
     @model = new CardModel name: name
     @preview = new PreviewView model: @model
     @publish = new PublishView model: @model
     @listen-to @model, 'change:activeView', @change-active-view
+    @listen-to @model, 'change:advancedMode', @change-advanced-mode
     @render!
 
   render: ->
@@ -27,6 +30,7 @@ module.exports = class CustomizeView extends Backbone.View
 
     @$preview-pane = @$ '.preview-pane'
     @$publish-pane = @$ '.publish-pane'
+    @$advanced-mode-toggle = @$ '.customize-type-toggle'
 
     @preview.$el.append-to @$preview-pane
     @preview.update!
@@ -40,22 +44,35 @@ module.exports = class CustomizeView extends Backbone.View
     @$ '.customize-instructions' .remove!
 
   change-active-view: ->
-    console.log 'change-active-view' @model.get 'activeView'
     @$el
       ..remove-class 'show-customize show-preview show-publish'
       ..add-class "show-#{@model.get 'activeView'}"
 
   change-advanced-mode: ->
+    @$advanced-mode-toggle.text if @model.get 'advancedMode' then 'Simple' else 'Advanced'
+    customizer = @get-customizer!
     @$customize-pane
       ..empty!
-      ..append @get-customizer!.el
+      ..append customizer.el
+
+    customizer.update!
 
   get-customizer: ->
-    @get-simple-customizer!
+    if @model.get 'advancedMode'
+      @get-advanced-customizer!
+    else
+      @get-simple-customizer!
 
   get-simple-customizer: ->
     if @_simple-customizer then return that
     @_simple-customizer = new SimpleCustomizerView model: @model
+
+  get-advanced-customizer: ->
+    if @_advanced-customizer then return that
+    @_advanced-customizer = new AdvancedCustomizerView model: @model
+
+  toggle-advanced-mode: ->
+    @model.set 'advancedMode', not @model.get 'advancedMode'
 
   show-preview: -> @model.set 'activeView' \preview
   show-customize: -> @model.set 'activeView' \customize

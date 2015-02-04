@@ -97,7 +97,6 @@ module.exports = class SimpleCustomizerView extends Backbone.View
     'keypress input': 'inputChange'
 
   initialize: ->
-    console.log 'init'
     @render!
 
   render: ->
@@ -107,6 +106,9 @@ module.exports = class SimpleCustomizerView extends Backbone.View
     @$el.html html
     @resize-all!
     set-timeout @resize-all, 500
+
+  update: ->
+    @resize-all!
 
   resize-all: ~>
     @$el.find 'textarea' .each (i, el) ~>

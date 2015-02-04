@@ -125,9 +125,26 @@
 .publish-pane
   left 200%
 
+.hide-mobile
+  display none
+
+.customize-type-toggle
+  background none
+  border none
+  color black
+  font-family font
+  font-weight 300
+  text-decoration underline
+  position absolute
+  top 20px
+  right 15px
+
 @media screen and (min-width: 700px)
   .show-mobile
     display none
+
+  .hide-mobile
+    display block
 
   .customize-header-customize,
   .customize-header-preview,

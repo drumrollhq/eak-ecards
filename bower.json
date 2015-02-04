@@ -17,7 +17,8 @@
     "font-awesome": "~4",
     "bluebird": "~2.9.3",
     "prelude-ls": "~1.1.1",
-    "backbone-deep-model": "~0.10.4"
+    "backbone-deep-model": "~0.10.4",
+    "codemirror": "~4.12.0"
   },
   "overrides": {
     "backbone": {
@@ -44,6 +45,15 @@
       "dependencies": {
         "backbone": "*"
       }
+    },
+    "codemirror": {
+      "main": [
+        "lib/codemirror.js",
+        "mode/xml/xml.js",
+        "mode/css/css.js",
+        "mode/htmlmixed/htmlmixed.js",
+        "lib/codemirror.css"
+      ]
     }
   }
 }

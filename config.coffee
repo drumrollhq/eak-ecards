@@ -34,6 +34,7 @@ exports.config = {
       defines:
         url: stylus.url()
       paths: ['./app/assets']
+      includeCss: true
 
 
   conventions:
