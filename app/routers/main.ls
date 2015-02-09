@@ -8,6 +8,8 @@ class MainRouter extends Backbone.Router
   initialize: ({$root}) ->
     @$root = $root
     @_last-trans = Promise.resolve {}
+    @on \route ~>
+      if ga? then ga 'send' 'pageview' page: window.location.hash
 
   show: (view-name, ...args) ->
     @_last-trans = @_last-trans

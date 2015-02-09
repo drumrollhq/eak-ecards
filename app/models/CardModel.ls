@@ -79,6 +79,8 @@ module.exports = class CardModel extends Backbone.Model
         local-storage.remove-item "card-save:#{@get \name}"
         @set 'loading' false
         @set 'file' file
+        if ga? then ga 'send' 'event' 'publish' 'success'
       .catch (e) ~>
         @set 'loading' false
         @set 'publishError' true
+        if ga? then ga 'send' 'event' 'publish' 'error'
