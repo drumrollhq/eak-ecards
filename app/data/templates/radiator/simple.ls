@@ -12,9 +12,9 @@ module.exports =
               * placeholder: \message1
               * tag: \br
               * placeholder: \message2
-          * tag: \p
-            placeholder: \from
           * tag: \img
             attrs:
               src: placeholder: \img
               alt: 'Shelton Crumplebottom'
+          * tag: \p
+            placeholder: \from
