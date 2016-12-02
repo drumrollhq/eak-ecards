@@ -1,96 +1,43 @@
-# Brunch with Hipsters
+# eak-ecards
 
-![image](http://www.latimes.com/media/photo/2011-07/63171841.jpg)
+eak-ecards is the little hackable ecard app at http://cards.eraseallkittens.com.
 
-Brunch with Hipsters is a rad [Brunch](http://brunch.io/) app skeleton that comes with unicorns out of the box. Take a look at [Hackerank (an example app)](https://github.com/elving/Hackerank) to see how it works. Brunch with Hipsters was awesome before awesome was awesome.
+Unfortunately it's old and doesn't build on recent versions of node, so you need node v0.10 (lolsob)
+to build it.
 
-## Languages
+After closing and using node v0.10 (try nvm, maybe?) you can get started with:
 
-- [CoffeeScript](http://coffeescript.org/)
-- [Stylus](http://learnboost.github.com/stylus/)
-- [Handlebars](http://handlebarsjs.com/)
+- `npm install`
+- `bower install`
+- `npm start`
 
-## Features
+That should start up a little server on localhost:3333 running the application.
+To customise the cards, change the files in `app/data`.
 
-- [jQuery](https://github.com/jquery/jquery)
-- [Lodash](https://github.com/bestiejs/lodash)
-- [Backbone](https://github.com/jashkenas/backbone)
-- [Swag](https://github.com/elving/swag)
-- [Font Awesome](https://github.com/FortAwesome/Font-Awesome)
-- [HTML5 Boilerplate Helpers](https://github.com/h5bp/html5-boilerplate)
+- `cards.ls` lists the available cards - each one needs an id, image, and alt text.
+- `templates/$cardName/fields.ls` has default values for any editable bit of the card
+- `templates/$cardName/simple.ls` defines the card template that gets shown in the 'simple' editor
+- `templates/$cardName/template.hbs` is the full handlebars template for the card
 
-## Plugins
+The `simple.ls` defines a sort of HTML structure. There's two types of item in here:
 
-- [Brunch Auto-Reload](https://github.com/brunch/auto-reload-brunch)
-- [Coffeelint](https://github.com/ilkosta/coffeelint-brunch)
-- [imageoptimizer-brunch](https://github.com/steffenmllr/imageoptmizer-brunch)
+##### tags:
 
-## Getting started
+these define html elements and have a tag name, attributes, and contents
+```
+* tag: 'some-tag-name'
+  attrs:
+    some-attr: 'attr-value'
+    other-attr: 'other-attr-value'
+  content:
+    * other item (tag or placeholder)
+    * other item (tag or placeholder)
+```
 
-    $ brunch new git@github.com:elving/brunch-with-hipsters.git
-    $ brunch w -s
+##### placeholder:
 
-or
-
-    $ git clone git@github.com:elving/brunch-with-hipsters.git
-    $ npm install
-    $ bower install
-    $ brunch w -s
-
-or
-
-    $ git clone git@github.com:elving/brunch-with-hipsters.git && npm install && $ bower install && brunch w -s
-
-## Generators
-
-First install [scaffolt](https://github.com/paulmillr/scaffolt#readme):
-
-    npm install -g scaffolt
-
-Then you can use the following commands to generate files:
-
-    scaffolt view <name>
-        → app/views/name.coffee
-        → test/views/name_test.coffee
-
-    scaffolt model <name>
-        → app/models/name.coffee
-        → test/models/name_test.coffee
-
-    scaffolt style <name>
-        → app/views/styles/name.styl
-
-    scaffolt template <name>
-        → app/views/templates/name.hbs
-
-    scaffolt collection <name>
-        → app/collections/name.coffee
-        → test/collections/name_test.coffee
-
-    scaffolt module <name>
-        → app/views/name.coffee
-        → test/views/name_test.coffee
-        → app/models/name.coffee
-        → test/models/name_test.coffee
-        → app/views/styles/name.styl
-        → app/views/templates/name.hbs
-
-## Testing
-
-To run your tests using [Karma](https://github.com/karma-runner) you will need to install [phantomjs](https://github.com/ariya/phantomjs):
-
-    brew update && brew install phantomjs
-
-Run the tests:
-
-    cake test
-
-Build and test your app:
-
-    cake build:test
-
-You can change Karma's configuration by editing `test/karma.conf.coffee` and add any test helpers by editing `test/helpers.coffee`.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/elving/brunch-with-hipsters/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+these define textboxes where users can write in their own content:
+```
+* placeholder: 'placeholder-name'
+```
 
