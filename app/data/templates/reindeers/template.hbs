@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+    <style>
+      @font-face {
+        font-family: "KgNextToMe";
+        src: url('/fonts/KGNextToMe-Solid.ttf') format("truetype");
+      }
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: 'Josefin Slab', cursive;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        background-color: #dcf7f6;
+        color: white;
+      }
+
+      section {
+        max-width: 540px;
+        margin: auto;
+        padding: 0 30px;
+      }
+
+      .card{
+        background-image: url({{img}});
+        background-size: cover;
+        height: 837px;
+      }
+
+      h1 {
+        font-family: 'KgNextToMe';
+        font-weight: normal;
+        text-align: center;
+        font-size: 3em;
+        margin: 0;
+        padding-top: 30px;
+      }
+
+      p {
+        margin: 10px 0;
+        float: right;
+        padding-top: 590px;
+        font-size: 1.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h1>{{message}}</h1>
+      <p>{{from}}</p>
+    </section>
+  </body>
+</html>

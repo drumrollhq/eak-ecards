@@ -1,38 +1,38 @@
 module.exports = {
-  mutual:
-    img: '/images/templates/mutual.png'
-    alt: 'It\'s time to leverage our feelings to a mutual advantage'
-  creepy:
-    img: '/images/templates/creepy.png'
-    alt: 'I like you in a non-creepy way'
-  precipice:
-    img: '/images/templates/precipice.png'
-    alt: 'You have driven me to the precipice of insanity'
-  game-changer:
-    img: '/images/templates/game-changer.png'
-    alt: 'Out love is a real game-changer, you have disrupted my soul'
-  picky:
-    img: '/images/templates/picky.png'
-    alt: 'You\'ll do'
-  cupcakes:
-    img: '/images/templates/cupcakes.png'
-    alt: 'I like you more than cupcakes'
-  glad:
-    img: '/images/templates/glad.png'
-    alt: 'I\'m glad you\'re not dead yet'
-  sticks:
-    img: '/images/templates/sticks.png'
-    alt: 'Let\'s throw our love against the wall and see what sticks'
-  radiator:
-    img: '/images/templates/radiator.png'
-    alt: 'You are nothing to me, just a human radiator'
-  user-friendly:
-    img: '/images/templates/user-friendly.png'
-    alt: 'Are you user-friendly'
-  invest:
-    img: '/images/templates/invest.png'
-    alt: 'Expenses in red, revenue in blue, your projections entice me, I\'ll invest in you'
-  contempt:
-    img: '/images/templates/contempt.png'
-    alt: 'I don\'t hate you'
+  cake:
+    img: '/images/templates/cake.png'
+    alt: 'Wish you were here'
+  chubby:
+    img: '/images/templates/chubby.png'
+    alt: 'Time to put on some chub'
+  dung:
+    img: '/images/templates/dung.png'
+    alt: 'Uh... Whatever!'
+  halloween:
+    img: '/images/templates/halloween.png'
+    alt: 'Happy late Halloween'
+  hohoho:
+    img: '/images/templates/hohoho.png'
+    alt: 'Ho Ho Ho!'
+  lights:
+    img: '/images/templates/lights.png'
+    alt: 'Nailed it!'
+  reindeers:
+    img: '/images/templates/reindeers.png'
+    alt: 'I eat reindeers for breakfast'
+  scarf:
+    img: '/images/templates/scarf.png'
+    alt: 'Baby, it\'s cold outside'
+  snowman:
+    img: '/images/templates/snowman.png'
+    alt: 'Merry Christmas!'
+  tidings:
+    img: '/images/templates/tidings.png'
+    alt: 'Good tidings ye ancient one'
+  traffic:
+    img: '/images/templates/traffic.png'
+    alt: 'Your Christmas spirit has driven me towards the precipice of insanity'
+  trees:
+    img: '/images/templates/trees.png'
+    alt: 'Bah Humbug.'
 }

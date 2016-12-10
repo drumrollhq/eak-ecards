@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet" type="text/css">
+    <link href="//fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+    <style>
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: 'Josefin Sans';
+        font-size: 26px;
+        margin: 0;
+        padding: 0;
+        background-color: #dcf7f6;
+      }
+
+      h1 {
+        font-weight: normal;
+        font-size: 2em;
+        margin-top: 0;
+        text-align: center;
+        padding-top: 50px;
+        color: white;
+      }
+
+      section {
+        max-width: 540px;
+        margin: auto;
+        padding: 0 30px;
+      }
+
+      .card{
+        background-image: url({{img}});
+        background-size: cover;
+        height: 837px;
+        position: relative;
+      }
+
+      .greeting{
+        font-family: 'Tangerine';
+        font-size: 1.2em;
+        position: absolute;
+        bottom: 10px;
+        right: 25px;
+        color: #820f01;
+      }
+
+      p{
+        margin:0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h1>{{message}}</h1>
+      <div class="greeting">
+        <p>{{to}}</p>
+        <p>{{from}}</p>
+      </div>
+    </section>
+  </body>
+</html>
