@@ -17,12 +17,12 @@ module.exports = {
   chubby:
     img: '/images/templates/chubby.png'
     alt: 'Time to put on some chub'
-  traffic:
-    img: '/images/templates/traffic.png'
-    alt: 'Your Christmas spirit has driven me towards the precipice of insanity'
   trees:
     img: '/images/templates/trees.png'
     alt: 'Bah Humbug.'
+  traffic:
+    img: '/images/templates/traffic.png'
+    alt: 'Your Christmas spirit has driven me towards the precipice of insanity'
   snowman:
     img: '/images/templates/snowman.png'
     alt: 'Merry Christmas!'
