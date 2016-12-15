@@ -1,7 +1,7 @@
 module.exports = {
-  title: 'Time to put on some chub'
+  title: 'Tis the Season to be Chubby'
   to: 'Merry Christmas Bob!'
-  message: 'Time to put on some chub'
+  message: 'Tis the Season to be Chubby'
   from: 'From Bobina'
   img: '/images/chubby.png'
 }
