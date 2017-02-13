@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Josefin+Slab" rel="stylesheet" type="text/css">
+    <style>
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: 'Josefin Slab', cursive;
+        font-size: 22px;
+        margin: 0;
+        padding: 0;
+        background-color: #F1D7FF;
+        background-image: -webkit-linear-gradient(top, #DDD9FC, #BCF3FF);
+        background-image:    -moz-linear-gradient(top, #DDD9FC, #BCF3FF);
+        background-image:         linear-gradient(top, #DDD9FC, #BCF3FF);
+      }
+
+      h1 {
+        font-weight: normal;
+      }
+
+      .card {
+        max-width: 600px;
+        margin: auto;
+        padding: 30px;
+        padding-top: 30px;
+      }
+
+      p {
+        text-align: right;
+        margin: 0;
+      }
+
+      h1 {
+        padding-top: 50px;
+        text-align: center;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        max-width: 350px;
+        margin: 70px auto;
+      }
+
+      .from {
+        font-size: 1.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <h1>{{message}}</h1>
+      <img src="{{img}}" alt="Cupcakes!">
+      <p>{{from1}}</p>
+      <p class="from">{{from2}}</p>
+    </section>
+  </body>
+</html>

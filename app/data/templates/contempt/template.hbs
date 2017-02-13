@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//fonts.googleapis.com/css?family=Tangerine" rel="stylesheet" type="text/css">
+    <style>
+      html, body {
+        min-width: 100%;
+        min-height: 100%;
+      }
+
+      body {
+        font-family: 'Tangerine', cursive;
+        font-size: 38px;
+        margin: 0;
+        padding: 0;
+        background: -webkit-linear-gradient(bottom, #8EF4A1, #9FEDFF);
+        background:    -moz-linear-gradient(bottom, #8EF4A1, #9FEDFF);
+        background:         linear-gradient(bottom, #8EF4A1, #9FEDFF);
+      }
+
+      section {
+        max-width: 600px;
+        margin: auto;
+        padding: 0 30px;
+      }
+
+      p, h1, img {
+        margin: 0;
+      }
+
+      p {
+        padding-left: 50px;
+      }
+
+      h1 {
+        font-weight: normal;
+        font-size: 1.5em;
+        text-align: center;
+        padding: 40px 0;
+      }
+
+      img {
+        display: block;
+        width: 50%;
+        max-width: 200px;
+        padding: 50px 0;
+      }
+
+      .poop {
+        width: 33%;
+        max-width: 120px;
+        margin-left: auto;
+        margin-top: 50px;
+      }
+
+      .from {
+        text-align: right;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="card">
+      <img src="{{img1}}" alt="Banana Bird">
+      <p>{{to}}</p>
+      <h1>{{message}}</h1>
+      <p class="from">
+        {{from1}}
+        <br>
+        {{from2}}
+      </p>
+      <img src="{{img2}}" class="poop">
+    </section>
+  </body>
+</html>
